@@ -1,0 +1,13 @@
+com\pymes\inventario\repository\UserRepository.class
+com\pymes\inventario\service\UserDetailsServiceImpl.class
+com\pymes\inventario\service\ProductoServiceImpl.class
+com\pymes\inventario\model\User.class
+com\pymes\inventario\controller\ProductoController.class
+com\pymes\inventario\controller\TestController.class
+com\pymes\inventario\repository\ProductoRepository.class
+com\pymes\inventario\service\AlertaCorreoService.class
+com\pymes\inventario\model\Producto.class
+com\pymes\inventario\config\SecurityConfig.class
+com\pymes\inventario\service\ProductoService.class
+com\pymes\inventario\InventarioApplication.class
+com\pymes\inventario\controller\AuthController.class
