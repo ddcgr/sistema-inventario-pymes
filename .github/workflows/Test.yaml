@@ -3,6 +3,7 @@ name: Java CI - Test
 on:
   push:
   pull_request:
+  workflow_dispatch:  # Permite ejecución manual desde GitHub Actions
 
 jobs:
   test:
@@ -18,4 +19,4 @@ jobs:
           distribution: 'temurin'
 
       - name: Build and test
-        run: mvn test
+        run: mvn -f inventario/inventario/pom.xml test
