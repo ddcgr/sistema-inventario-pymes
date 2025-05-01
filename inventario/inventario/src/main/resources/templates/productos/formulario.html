@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${producto?.id} == null ? 'Agregar Producto' : 'Editar Producto'">Formulario</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fdf6ec;
+            color: #333;
+            margin: 2rem;
+        }
+
+        h1 {
+            color: #d96c06;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            max-width: 500px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: bold;
+            color: #d96c06;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff9f3;
+        }
+
+        .error {
+            color: #b00020;
+            font-size: 0.9rem;
+            margin-top: -0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        button {
+            background-color: #f78c25;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e67612;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 1rem;
+            text-decoration: none;
+            color: #d96c06;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1 th:text="${producto?.id} == null ? 'Agregar Producto' : 'Editar Producto'">Formulario</h1>
+
+<form th:action="@{/productos}" th:object="${producto}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <div>
+        <label>Nombre:</label>
+        <input type="text" th:field="*{nombre}" required>
+        <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></div>
+    </div>
+    <div>
+        <label>Descripción:</label>
+        <input type="text" th:field="*{descripcion}">
+    </div>
+    <div>
+        <label>Cantidad:</label>
+        <input type="number" th:field="*{cantidad}" required>
+        <div th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}" class="error"></div>
+    </div>
+    <div>
+        <label>Precio:</label>
+        <input type="number" step="0.01" th:field="*{precio}" required>
+        <div th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}" class="error"></div>
+    </div>
+    <div>
+        <button type="submit">Guardar</button>
+    </div>
+    <div>
+        <label for="loteCompleto">Lote completo:</label>
+        <input type="number" id="loteCompleto" name="loteCompleto" th:field="*{loteCompleto}">
+    </div>
+    
+</form>
+
+<a href="/productos">← Volver a la lista</a>
+
+</body>
+</html>
