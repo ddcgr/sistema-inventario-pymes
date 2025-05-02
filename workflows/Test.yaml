@@ -1,0 +1,30 @@
+name: Java CI - Test + Docker Build
+
+on:
+  push:
+    branches:
+      - feature-Gael
+  pull_request:
+    branches:
+      - feature-Gael
+  workflow_dispatch:
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Ejecutar pruebas con Maven
+        run: mvn -f inventario/inventario/pom.xml test
+
+      - name: Construir imagen Docker
+        run: docker build -t inventario-app -f inventario/inventario/Dockerfile .
