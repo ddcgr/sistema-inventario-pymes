@@ -3,10 +3,10 @@ name: Java CI - Test + Docker Build
 on:
   push:
     branches:
-      - feature-Gael
+      - main
   pull_request:
     branches:
-      - feature-Gael
+      - main
   workflow_dispatch:
 
 jobs:
